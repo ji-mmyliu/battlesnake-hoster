@@ -27,7 +27,7 @@ class SnakeAdmin(admin.ModelAdmin):
 
     def get_readonly_fields(self, request, obj=None):
         if obj:  # editing an existing object
-            return self.readonly_fields + ('owner',)
+            return self.readonly_fields + ('owner', 'name',)
         else:
             return self.readonly_fields + ('source_code',)
 
