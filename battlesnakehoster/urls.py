@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
+import functools
 
 admin.site.site_header = "Battlesnake Hoster"
 admin.site.site_title = "Battlesnake Hoster"
@@ -22,6 +24,5 @@ admin.site.index_title = "Battlesnake Hoster"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    path('snake/', include('snake.urls'))
+    path('', functools.partial(redirect, "/admin"))
 ]
