@@ -23,13 +23,13 @@ class SnakeAdminForm(forms.ModelForm):
 class SnakeAdmin(admin.ModelAdmin):
     form = SnakeAdminForm
     exclude = ('uuid', 'snake_url',)
-    list_display = ('name', 'snake_url', 'owner',)
+    list_display = ('name', 'owner',)
 
     def get_readonly_fields(self, request, obj=None):
         if obj:  # editing an existing object
-            return self.readonly_fields + ('owner', 'name',)
+            return self.readonly_fields + ('snake_url', 'owner', 'name',)
         else:
-            return self.readonly_fields + ('source_code',)
+            return self.readonly_fields + ('snake_url', 'source_code',)
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
